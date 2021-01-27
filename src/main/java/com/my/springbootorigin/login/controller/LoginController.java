@@ -3,6 +3,7 @@ package com.my.springbootorigin.login.controller;
 import com.my.springbootorigin.login.pojo.req.LoginReq;
 import com.my.springbootorigin.login.service.LoginService;
 import com.my.springbootorigin.utils.vo.ResultVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,4 +27,8 @@ public class LoginController {
         return loginService.logout();
     }
 
+    @RequestMapping("/userInfo")
+    public ResultVO getUserInfo(@Param("token") String token) {
+        return loginService.getUserInfo(token);
+    }
 }

@@ -1,6 +1,6 @@
-package com.my.springbootorigin.utils.exception;
+package com.my.springbootorigin.common.exception;
 
-import com.my.springbootorigin.utils.enums.BaseErrorInfo;
+import com.my.springbootorigin.common.enums.BaseErrorInfo;
 
 /**
  * 业务异常处理类

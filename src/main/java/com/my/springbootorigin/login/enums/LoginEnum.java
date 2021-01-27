@@ -1,6 +1,6 @@
 package com.my.springbootorigin.login.enums;
 
-import com.my.springbootorigin.utils.enums.BaseErrorInfo;
+import com.my.springbootorigin.common.enums.BaseErrorInfo;
 
 public enum LoginEnum implements BaseErrorInfo {
     LOGIN_ERR(1, "账户或密码错误")

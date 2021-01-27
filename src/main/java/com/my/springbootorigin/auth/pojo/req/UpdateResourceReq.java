@@ -1,15 +1,10 @@
-package com.my.springbootorigin.auth.pojo;
+package com.my.springbootorigin.auth.pojo.req;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import javax.validation.constraints.NotNull;
 
-import java.util.Date;
+public class UpdateResourceReq {
 
-@TableName("sys_permission")
-public class PermissionInfo {
-
-    @TableId(type = IdType.AUTO)
+    @NotNull(message = "id 不能为空")
     private Integer id;
     private String name;
     private String code;
@@ -45,15 +40,5 @@ public class PermissionInfo {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    @Override
-    public String toString() {
-        return "PermissionInfo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", code='" + code + '\'' +
-                ", url='" + url + '\'' +
-                '}';
     }
 }

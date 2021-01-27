@@ -1,4 +1,4 @@
-package com.my.springbootorigin.utils.enums;
+package com.my.springbootorigin.common.enums;
 
 /**
  * 基础ERROR接口

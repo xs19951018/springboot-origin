@@ -1,6 +1,6 @@
 package com.my.springbootorigin.login.pojo.dto;
 
-import com.my.springbootorigin.auth.pojo.UserInfo;
+import com.my.springbootorigin.auth.pojo.model.UserInfo;
 
 public class UserInfoDTO extends UserInfo {
 

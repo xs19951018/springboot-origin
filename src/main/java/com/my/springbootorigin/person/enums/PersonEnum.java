@@ -1,6 +1,6 @@
 package com.my.springbootorigin.person.enums;
 
-import com.my.springbootorigin.utils.enums.BaseErrorInfo;
+import com.my.springbootorigin.common.enums.BaseErrorInfo;
 
 public enum PersonEnum implements BaseErrorInfo {
 

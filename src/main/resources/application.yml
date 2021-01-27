@@ -41,3 +41,12 @@ mybatis-plus:
   configuration:
     # 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射
     map-underscore-to-camel-case: false
+
+# 七牛云存储
+qiniu:
+  accessKey: ESWAsMXNVCvvx1m5oIBZL9-wUZaJSrADZFGVpb2B
+  secretKey: Or1gcbt9pkaLVIC4ABX3zygoACSN5jlSoesCapEk
+  bucket: springboot-origin  # 存储空间名称
+  zone: zone2  # [{'zone0':'华东'}, {'zone1':'华北'},{'zone2':'华南'},{'zoneNa0':'北美'},{'zoneAs0':''}]
+  domain: http://qng0jlu9n.hn-bkt.clouddn.com  # 测试域名, 30days
+  expire: -1  # 过期时间

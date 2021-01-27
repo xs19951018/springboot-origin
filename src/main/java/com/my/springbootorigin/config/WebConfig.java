@@ -19,11 +19,26 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         List<String> excludePath = new ArrayList<>();
         excludePath.add("/login");
-        registry.addInterceptor(authenticationInterceptor()).excludePathPatterns(excludePath);
+        // 加入的顺序就是执行的顺序，先执行所有的preHandle,afterCompletion最后是postHandle
+        //registry.addInterceptor(authenticationInterceptor()).excludePathPatterns(excludePath);
     }
+
+    /*@Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+
+        registration.setDispatcherTypes(DispatcherType.REQUEST);
+        registration.setFilter(new ParamsFilter());
+        registration.addUrlPatterns("/*");
+        registration.setName("paramsFilter");
+        registration.setOrder(Integer.MAX_VALUE-1);
+
+        return registration;
+    }*/
 
     @Bean
     public AuthenticationInterceptor authenticationInterceptor() {
         return new AuthenticationInterceptor();
     }
+
 }

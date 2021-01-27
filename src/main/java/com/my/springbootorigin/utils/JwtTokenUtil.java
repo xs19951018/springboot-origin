@@ -74,14 +74,9 @@ public class JwtTokenUtil {
      */
     public static Claims parseJWT(String jwt) {
         // 如果token过期，那么它将抛出异常
-        Claims claims = null;
-        try {
-            claims = Jwts.parser()
+        Claims claims = Jwts.parser()
                     .setSigningKey(DatatypeConverter.parseBase64Binary(SECRET))
                     .parseClaimsJws(jwt).getBody();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return claims;
     }
 
@@ -91,14 +86,11 @@ public class JwtTokenUtil {
      * @return
      */
     public static boolean isExpiration(String token) {
-        Claims claims = parseJWT(token);
-        if (claims == null) return true;
-        return claims.getExpiration().before(new Date());
+        return parseJWT(token).getExpiration().before(new Date());
     }
 
     /**
      * 从HttpServletRequest中解析出token
-     *
      * @param request
      * @return
      */

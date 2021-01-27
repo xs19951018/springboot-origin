@@ -1,9 +1,13 @@
 package com.my.springbootorigin.component.interceptor;
 
+import com.my.springbootorigin.config.Constants;
+import com.my.springbootorigin.login.service.LoginService;
 import com.my.springbootorigin.utils.JwtTokenUtil;
 import com.my.springbootorigin.utils.ResultVOUtil;
 import com.my.springbootorigin.utils.vo.ResultVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,15 +20,29 @@ import java.io.PrintWriter;
  */
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
+    @Autowired
+    private LoginService loginService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
+        // 如果请求不是映射到方法直接返回：解决axios会请求两次的问题
+        if (!(handler instanceof HandlerMethod)) {
+            return true;
+        }
+
         String token = JwtTokenUtil.parseToken(request);
         if (StringUtils.hasLength(token)) {
-            // token 是否过期
-            boolean expiration = JwtTokenUtil.isExpiration(token);
-            if (!expiration) {
-                return true;
+            // 验证token
+            ResultVO resultVO = loginService.validateUser(token);
+            if (resultVO.getData() == null) {
+                this.setResponse(response, resultVO.toString());
+                return false;
             }
+
+            // 解析user
+            request.setAttribute(Constants.CURRENT_USER, resultVO.getData());
+            return true;
         }
 
         ResultVO result = ResultVOUtil.error(2, "token 认证失败");

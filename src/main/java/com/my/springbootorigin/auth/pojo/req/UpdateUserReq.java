@@ -1,23 +1,18 @@
-package com.my.springbootorigin.auth.pojo;
+package com.my.springbootorigin.auth.pojo.req;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.google.gson.Gson;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-import java.util.Date;
+public class UpdateUserReq {
 
-@TableName("sys_user")
-public class UserInfo {
-
-    @TableId(type = IdType.AUTO)
+    @NotNull(message = "id 不能为空")
     private Integer id;
+    @NotBlank(message = "用户名不能为空")
     private String userName;
     private String password;
     private String name;
     private String phone;
-    private Date createTime;
-    private Integer status;
+    private String avatar;
 
     public Integer getId() {
         return id;
@@ -59,24 +54,11 @@ public class UserInfo {
         this.phone = phone;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

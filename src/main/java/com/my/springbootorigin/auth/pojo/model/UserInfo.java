@@ -1,21 +1,24 @@
-package com.my.springbootorigin.auth.pojo;
+package com.my.springbootorigin.auth.pojo.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.google.gson.Gson;
 
 import java.util.Date;
 
-@TableName("sys_menu")
-public class MenuInfo {
+@TableName("sys_user")
+public class UserInfo {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
+    private String userName;
+    private String password;
     private String name;
-    private Integer parentId;
+    private String phone;
+    private String avatar;
     private Date createTime;
     private Integer status;
-    private Integer order;
 
     public Integer getId() {
         return id;
@@ -23,6 +26,22 @@ public class MenuInfo {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -33,12 +52,20 @@ public class MenuInfo {
         this.name = name;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public Date getCreateTime() {
@@ -57,23 +84,8 @@ public class MenuInfo {
         this.status = status;
     }
 
-    public Integer getOrder() {
-        return order;
-    }
-
-    public void setOrder(Integer order) {
-        this.order = order;
-    }
-
     @Override
     public String toString() {
-        return "MenuInfo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", parentId=" + parentId +
-                ", createTime=" + createTime +
-                ", status=" + status +
-                ", order=" + order +
-                '}';
+        return new Gson().toJson(this);
     }
 }

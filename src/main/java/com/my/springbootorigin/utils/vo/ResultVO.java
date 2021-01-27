@@ -8,10 +8,10 @@ import com.google.gson.Gson;
 public class ResultVO<T> {
 
     /** 返回码 */
-    private Integer code;
+    private Integer code = 0;
 
     /** 提示信息 */
-    private String msg;
+    private String message;
 
     /** 具体内容 */
     private T data;
@@ -24,12 +24,12 @@ public class ResultVO<T> {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {

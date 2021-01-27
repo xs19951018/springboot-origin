@@ -1,15 +1,19 @@
-package com.my.springbootorigin.auth.pojo;
+package com.my.springbootorigin.auth.pojo.model;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
-@TableName("sys_role")
-public class RoleInfo {
+import java.util.Date;
+
+@TableName("sys_resource")
+public class ResourceInfo {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
     private String name;
+    private String code;
+    private String url;
 
     public Integer getId() {
         return id;
@@ -27,11 +31,29 @@ public class RoleInfo {
         this.name = name;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     @Override
     public String toString() {
-        return "RoleInfo{" +
+        return "PermissionInfo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

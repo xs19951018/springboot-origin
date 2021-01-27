@@ -1,7 +1,7 @@
 package com.my.springbootorigin.handle;
 
 import com.my.springbootorigin.utils.ResultVOUtil;
-import com.my.springbootorigin.utils.exception.BaseErrorException;
+import com.my.springbootorigin.common.exception.BaseErrorException;
 import com.my.springbootorigin.utils.vo.ResultVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class ExceptionHandle {
             return ResultVOUtil.error(errorException.getCode(), errorException.getMessage());
         } else {
             logger.error("【系统异常】{}", e);
-            return ResultVOUtil.error(-1, "未知错误");
+            return ResultVOUtil.error(-1, e.getMessage());
         }
     }
 
